@@ -99,7 +99,10 @@ class Artist():
         if isinstance(self._modelFn, list): 
             objectList = []
             for objectFn in self._modelFn:
-                objectList.append (objectFn())
+                if callable(objectFn):
+                    objectList.append (objectFn())  # it's a bound method
+                else: 
+                    objectList.append (objectFn)       # it's a normal object
             return objectList
         else: 
             try: 
