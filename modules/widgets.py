@@ -573,7 +573,7 @@ class Label_Widget(Base_Widget):
         Label_Widget  (self, 3,0, lab='Loremm ipsumm') :)
         Label_Widget  (self, 3,0, width=200, lab=self.myLabeText) :)
     """
-    def __init__(self, *args, padx=10, sticky = None, text_style='Disabled', columnspan=None, **kwargs):
+    def __init__(self, *args, padx=10, pady=0, sticky = None, text_style='Disabled', columnspan=None, **kwargs):
         super().__init__(*args, text_style=text_style, **kwargs)
 
         if sticky       is None: sticky = "sw"
@@ -581,7 +581,7 @@ class Label_Widget(Base_Widget):
 
         self.mainCTk = ctk.CTkLabel(self.parent, width=self.width, justify ='left', 
                                     text=self.label, anchor= "w", text_color=self._text_color())           
-        self.mainCTk.grid(row=self.row, column=self.column,  columnspan=columnspan, padx=padx, sticky=sticky)
+        self.mainCTk.grid(row=self.row, column=self.column,  columnspan=columnspan, padx=padx, pady=pady, sticky=sticky)
 
     def _set_CTkControl_label (self, widgetCTk, newLabelStr: str):
         widgetCTk.configure (text_color=self._text_color())
